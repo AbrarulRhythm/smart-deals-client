@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { use } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router';
+import { AuthContext } from '../../context/AuthContext';
+import { toast } from 'react-toastify';
 
 const Register = () => {
+    const { signInWithGoogle } = use(AuthContext);
+
+    // Handle Google Sign In
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then((result) => {
+                const user = result.user;
+                toast.success(`Welcome aboard, ${user.displayName}! 🎉 You've successfully signed up.`);
+            })
+            .catch((error) => {
+                toast.error(error.message);
+            })
+    }
+
     return (
-        <section>
+        <section className='register-user'>
             <div className='h-auto flex justify-center items-center py-14'>
                 <div className='container'>
                     <div className='flex flex-wrap -mx-3 justify-center'>
@@ -38,7 +54,8 @@ const Register = () => {
                                 <div className='my-6 overflow-hidden'>
                                     <div className='relative font-medium text-center or-social'>OR</div>
                                 </div>
-                                <button className='font-semibold flex items-center justify-center w-full gap-2.5 border border-dark-06 hover:border-violet-400 duration-200 cursor-pointer rounded-sm py-3'>
+                                {/* Google Sign In Button */}
+                                <button onClick={handleGoogleSignIn} className='font-semibold flex items-center justify-center w-full gap-2.5 border border-dark-06 hover:border-violet-400 duration-200 cursor-pointer rounded-sm py-3'>
                                     <FcGoogle className='text-[26px]' /> Sign Up With Google
                                 </button>
                             </div>
