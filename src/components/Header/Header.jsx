@@ -1,9 +1,10 @@
 import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../context/AuthContext';
+import { toast } from 'react-toastify';
 
 const Header = () => {
-    const { user } = use(AuthContext);
+    const { user, signOutUser } = use(AuthContext);
 
     const links = (
         <>
@@ -31,6 +32,17 @@ const Header = () => {
         </>
     );
 
+    // Handle Sign Out
+    const handleSignOut = () => {
+        signOutUser()
+            .then(() => {
+                toast.success('Successfully signed out! We hope to see you again soon.')
+            })
+            .catch((error) => {
+                toast.error(error.message);
+            })
+    }
+
     return (
         <header>
             <div className="navbar bg-base-100 shadow-sm">
@@ -55,7 +67,7 @@ const Header = () => {
                 <div className="navbar-end">
                     {
                         user ? (
-                            <a className="btn">Sign Out</a>
+                            <button onClick={handleSignOut} className="btn">Sign Out</button>
                         ) : (
                             <Link to='/register' className="btn">Register</Link>
                         )
