@@ -12,7 +12,27 @@ const Register = () => {
         signInWithGoogle()
             .then((result) => {
                 const user = result.user;
-                toast.success(`Welcome aboard, ${user.displayName}! 🎉 You've successfully signed up.`);
+                const newUser = {
+                    name: user.displayName,
+                    email: user.email,
+                    image: user.photoURL
+                }
+
+                // Create user in the database
+                fetch('http://localhost:3000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(newUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log('data after user save: ', data);
+                        if (data.insertedId) {
+                            toast.success(`Welcome aboard, ${user.displayName}! 🎉 You've successfully signed up.`);
+                        }
+                    })
             })
             .catch((error) => {
                 toast.error(error.message);

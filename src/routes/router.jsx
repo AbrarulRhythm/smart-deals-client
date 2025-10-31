@@ -6,6 +6,7 @@ import AllProducts from "../Pages/AllProducts/AllProducts";
 import Register from "../Pages/Register/Register";
 import MyProducts from "../Pages/MyProducts/MyProducts";
 import MyBids from "../Pages/MyBids/MyBids";
+import PrivateRoute from "../context/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -27,11 +28,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'myProducts',
-                element: <MyProducts></MyProducts>
+                element: <PrivateRoute><MyProducts></MyProducts></PrivateRoute>
             },
             {
                 path: 'myBids',
-                element: <MyBids></MyBids>
+                element: <PrivateRoute><MyBids></MyBids></PrivateRoute>
             }
         ]
     }
