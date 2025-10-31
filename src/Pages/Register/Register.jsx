@@ -32,6 +32,9 @@ const Register = () => {
                         if (data.insertedId) {
                             toast.success(`Welcome aboard, ${user.displayName}! 🎉 You've successfully signed up.`);
                         }
+                        else {
+                            toast(data.message);
+                        }
                     })
             })
             .catch((error) => {
