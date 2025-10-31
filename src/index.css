@@ -1,5 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
 
 @plugin "daisyui" {
   themes: light --default;
+}
+
+@theme {
+  --font-Inter: "Inter", "sans-serif";
+
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-xxl: 1400px;
+
+  --color-body-bg: #E9E9E9;
+  --color-dark-01: #001931;
+  --color-dark-06: #E9E9E9;
+}
+
+html,
+body {
+  @apply scroll-smooth;
+}
+
+body {
+  @apply font-Inter text-base text-dark-01 relative bg-body-bg overflow-x-hidden;
+}
+
+.button-linear-gradient {
+  @apply bg-linear-to-r from-[#632EE3] from-5% to-[#9F62F2] to-85%;
+}
+
+.button-linear-gradient:hover {
+  @apply bg-linear-to-r from-[#9F62F2] from-5% to-[#632EE3] to-85%;
+}
+
+.theme-text-linear-gradient {
+  @apply bg-linear-to-r from-[#632EE3] from-5% to-[#9F62F2] to-85% text-transparent bg-clip-text;
+}
+
+.container {
+  @apply mx-auto sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1140px] xxl:max-w-[1320px] px-3;
+}
+
+.or-social {
+  @apply before:content-[''] before:w-[50%] before:absolute before:h-px before:bg-dark-06 before:-left-6 before:top-[50%] after:content-[''] after:w-[50%] after:absolute after:h-px after:bg-dark-06 after:-right-6 after:top-[50%];
 }

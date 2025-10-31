@@ -3,6 +3,7 @@ import RootLayout from "../layouts/RootLayout";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import AllProducts from "../Pages/AllProducts/AllProducts";
+import Register from "../Pages/Register/Register";
 
 export const router = createBrowserRouter([
     {
@@ -17,6 +18,10 @@ export const router = createBrowserRouter([
             {
                 path: 'allProducts',
                 Component: AllProducts
+            },
+            {
+                path: 'register',
+                Component: Register
             }
         ]
     }
