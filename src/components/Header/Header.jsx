@@ -70,7 +70,7 @@ const Header = () => {
                             {
                                 user ? (
                                     <div className='relative'>
-                                        <div>
+                                        <div onClick={handleSignOut}>
                                             <img className='w-12 h-12 object-cover rounded-full cursor-pointer' src={`${user && user.photoURL}`} alt="Profile Image" />
                                         </div>
 
