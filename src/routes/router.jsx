@@ -8,6 +8,7 @@ import MyProducts from "../Pages/MyProducts/MyProducts";
 import MyBids from "../Pages/MyBids/MyBids";
 import PrivateRoute from "../context/PrivateRoute";
 import ProductDetails from "../components/ProductDetails/ProductDetails";
+import SignIn from "../Pages/SignIn/SignIn";
 
 export const router = createBrowserRouter([
     {
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
             {
                 path: 'register',
                 Component: Register
+            },
+            {
+                path: 'sign-in',
+                Component: SignIn
             },
             {
                 path: 'myProducts',
