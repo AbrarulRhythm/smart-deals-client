@@ -100,7 +100,7 @@ const Header = () => {
                                             <img className='w-12 h-12 object-cover rounded-full cursor-pointer' src={`${user && user.photoURL}`} alt="Profile Image" />
                                         </div>
 
-                                        <div className={`${openMenu ? 'opacity-100 visible' : 'opacity-0 invisible'} bg-white border border-gray-200 rounded-sm absolute top-[73px] right-0 w-[294px] h-auto before:content-[""] before:w-6 before:h-6 before:absolute before:-top-3 before:right-3.5 before:bg-white before:rotate-45 before:rounded-tl-sm before:border-t before:border-l before:border-gray-200`}>
+                                        <div className={`${openMenu ? 'opacity-100 visible' : 'opacity-0 invisible'} z-50 shadow-lg bg-white border border-gray-200 rounded-sm absolute top-[73px] right-0 w-[294px] h-auto before:content-[""] before:w-6 before:h-6 before:absolute before:-top-3 before:right-3.5 before:bg-white before:rotate-45 before:rounded-tl-sm before:border-t before:border-l before:border-gray-200`}>
                                             <div className='py-6 text-center'>
                                                 <img src={`${user && user.photoURL}`} className='w-12 h-12 rounded-full mx-auto mb-2' alt="Profile Image" />
                                                 <h5 className='text-sm font-medium'>{user && user.displayName}</h5>
