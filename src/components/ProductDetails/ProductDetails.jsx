@@ -17,7 +17,6 @@ const ProductDetails = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log('bids for this products', data);
                 setBids(data);
             })
     }, [user, productId]);
