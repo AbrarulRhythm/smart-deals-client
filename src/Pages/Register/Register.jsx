@@ -44,6 +44,8 @@ const Register = () => {
 
     return (
         <section className='register-user'>
+            <title>Sign up for Smart Deals</title>
+
             <div className='h-auto flex justify-center items-center py-14'>
                 <div className='container'>
                     <div className='flex flex-wrap -mx-3 justify-center'>
@@ -51,7 +53,7 @@ const Register = () => {
                             <div className='p-8 md:p-10 bg-white rounded-lg shadow'>
                                 <div className='text-center mb-6'>
                                     <h2 className='text-3xl font-semibold mb-2'>Register Now!</h2>
-                                    <p>Already have an account? <Link to='/' className='theme-text-linear-gradient hover:opacity-80 duration-200'>Login Now</Link></p>
+                                    <p>Already have an account? <Link to='/sign-in' className='theme-text-linear-gradient hover:opacity-80 duration-200'>Login Now</Link></p>
                                 </div>
                                 <form>
                                     <div className='mb-4'>
