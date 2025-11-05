@@ -2,13 +2,15 @@ import React from 'react';
 import { FaArrowLeftLong } from 'react-icons/fa6';
 import { Link } from 'react-router';
 import SectionTitle from '../../components/SectionTitle/SectionTitle';
-import axios from 'axios';
 import { toast } from 'react-toastify';
 import useAuth from '../../hooks/useAuth';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+// import useAxios from '../../hooks/useAxios';
 
 const CreateProduct = () => {
     const { user } = useAuth();
-    console.log(user);
+    // const axiosInstance = useAxios();
+    const axiosSecure = useAxiosSecure();
 
     const currentDate = new Date();
 
@@ -36,21 +38,22 @@ const CreateProduct = () => {
         const title = form.title.value;
         const minPrice = parseInt(form.minPrice.value);
         const maxPrice = parseInt(form.maxPrice.value);
-        const productImage = form.productImage.value;
+        const image = form.productImage.value;
 
         const newProduct = {
             title,
-            minPrice,
-            maxPrice,
-            productImage,
+            price_min: minPrice,
+            price_max: maxPrice,
+            image,
             email: user.email,
             seller_image: user?.photoURL,
             seller_name: user?.displayName,
             created_at: [formattedDate, formattedTime]
         }
 
-        axios.post('http://localhost:3000/products', newProduct)
+        axiosSecure.post('/products', newProduct)
             .then(data => {
+                console.log(data);
                 if (data.data.insertedId) {
                     toast.success("Your product has been successfully created! 🎉");
                 }
