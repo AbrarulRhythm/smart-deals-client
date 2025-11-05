@@ -14,7 +14,7 @@ const Home = () => {
             <h1>This is Home</h1>
             <section className='recent-products py-12 md:py-20'>
                 <div className='container'>
-                    <SectionTitle title='Recent' colorTitle='Products'></SectionTitle>
+                    <SectionTitle title='Recent' colorTitle='Products' classes='text-center'></SectionTitle>
                     <div className='recent-products-wrap'>
                         <Suspense fallback={<span>Data is Loading...</span>}>
                             <LatestProducts latestProductsPromise={latestProductsPromise}></LatestProducts>

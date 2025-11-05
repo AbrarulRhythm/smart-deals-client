@@ -3,14 +3,14 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Link } from 'react-router';
 
 const Product = ({ latestProduct }) => {
-    const { _id, title, price_min, price_max, image1 } = latestProduct;
+    const { _id, title, price_min, price_max, image } = latestProduct;
 
     return (
         <div className='w-full md:w-6/12 lg:w-4/12 px-3 mb-6'>
             <div className='bg-white p-4 rounded-lg'>
                 <div className='mb-4'>
                     <LazyLoadImage
-                        src={image1}
+                        src={image}
                         alt="Latest Product Image"
                         className='w-full h-[276px] object-cover rounded-lg'
                     ></LazyLoadImage>

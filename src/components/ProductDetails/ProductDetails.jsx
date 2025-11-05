@@ -2,6 +2,8 @@ import React, { use, useEffect, useRef, useState } from 'react';
 import { useLoaderData } from 'react-router';
 import { AuthContext } from '../../context/AuthContext';
 import Swal from 'sweetalert2';
+import SectionTitle from '../SectionTitle/SectionTitle';
+import TableRow from '../TableRow/TableRow';
 
 const ProductDetails = () => {
     const { user } = use(AuthContext);
@@ -68,12 +70,10 @@ const ProductDetails = () => {
     }
 
     return (
-        <div>
+        <>
             <button
                 onClick={handleBidModalOpen}
                 className='button-linear-gradient py-4 px-12 text-white rounded-sm font-medium cursor-pointer m-10'>I want Buy This Product</button>
-
-            <h1 className='text-3xl'>Total Bids {bids.length}</h1>
 
             <dialog ref={bidModalRef} className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
@@ -93,7 +93,42 @@ const ProductDetails = () => {
                     </div>
                 </div>
             </dialog>
-        </div>
+
+            <section className='my-bids'>
+                <div className='container'>
+                    <SectionTitle title='Bids For This Products:' colorTitle={bids.length} classes='text-left'></SectionTitle>
+
+                    <div className="overflow-x-auto">
+                        <table className="table">
+                            {/* head */}
+                            <thead>
+                                <tr>
+                                    <th>SL No</th>
+                                    <th>Product</th>
+                                    <th>Seller</th>
+                                    <th>Bid Price</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    bids.map((bid, index) => {
+                                        return (
+                                            <TableRow
+                                                key={bid._id}
+                                                index={index}
+                                                bid={bid}
+                                            ></TableRow>
+                                        )
+                                    })
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </>
     );
 };
 
