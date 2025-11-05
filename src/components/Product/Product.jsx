@@ -12,7 +12,7 @@ const Product = ({ latestProduct }) => {
                     <LazyLoadImage
                         src={image}
                         alt="Latest Product Image"
-                        className='w-full h-[276px] object-cover rounded-lg'
+                        className='w-full h-auto object-cover rounded-lg'
                     ></LazyLoadImage>
                 </div>
                 <div className='inline-block text-[12px] bg-violet-100 mb-2 py-1.5 px-3 rounded-4xl'>

@@ -4,6 +4,7 @@ import { AuthContext } from '../../context/AuthContext';
 import Swal from 'sweetalert2';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import TableRow from '../TableRow/TableRow';
+import axios from 'axios';
 
 const ProductDetails = () => {
     const { user } = use(AuthContext);
@@ -12,16 +13,27 @@ const ProductDetails = () => {
     const bidModalRef = useRef(null);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/products/bids/${productId}`, {
+        axios.get(`http://localhost:3000/products/bids/${productId}`, {
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }
         })
-            .then(res => res.json())
             .then(data => {
-                setBids(data);
+                setBids(data.data);
             })
     }, [user, productId]);
+
+    // useEffect(() => {
+    //     fetch(`http://localhost:3000/products/bids/${productId}`, {
+    //         headers: {
+    //             authorization: `Bearer ${user.accessToken}`
+    //         }
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setBids(data);
+    //         })
+    // }, [user, productId]);
 
     const handleBidModalOpen = () => {
         bidModalRef.current.showModal();
