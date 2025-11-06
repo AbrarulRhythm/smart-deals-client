@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import useAxios from '../../hooks/useAxios';
 
 const TableRow = ({ bid, index }) => {
+    const axios = useAxios();
     const { product, bid_price, status } = bid;
     const [productData, setProductData] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/products/${product}`,)
-            .then(res => res.json())
-            .then(data => {
-                setProductData(data);
+        axios.get(`/products/${product}`)
+            .then((data) => {
+                setProductData(data.data);
             })
-    }, [product]);
+    }, [product, axios]);
 
     return (
         <tr className="bg-base-200">

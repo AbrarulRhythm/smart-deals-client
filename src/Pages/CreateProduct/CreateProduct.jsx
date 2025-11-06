@@ -53,7 +53,6 @@ const CreateProduct = () => {
 
         axiosSecure.post('/products', newProduct)
             .then(data => {
-                console.log(data);
                 if (data.data.insertedId) {
                     toast.success("Your product has been successfully created! 🎉");
                 }

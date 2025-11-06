@@ -4,36 +4,22 @@ import { AuthContext } from '../../context/AuthContext';
 import Swal from 'sweetalert2';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import TableRow from '../TableRow/TableRow';
-import axios from 'axios';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import { toast } from 'react-toastify';
 
 const ProductDetails = () => {
     const { user } = use(AuthContext);
+    const axiosSecure = useAxiosSecure();
     const { _id: productId } = useLoaderData();
     const [bids, setBids] = useState([]);
     const bidModalRef = useRef(null);
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/products/bids/${productId}`, {
-            headers: {
-                authorization: `Bearer ${user.accessToken}`
-            }
-        })
-            .then(data => {
+        axiosSecure.get(`/products/bids/${productId}`)
+            .then((data) => {
                 setBids(data.data);
             })
-    }, [user, productId]);
-
-    // useEffect(() => {
-    //     fetch(`http://localhost:3000/products/bids/${productId}`, {
-    //         headers: {
-    //             authorization: `Bearer ${user.accessToken}`
-    //         }
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setBids(data);
-    //         })
-    // }, [user, productId]);
+    }, [productId, axiosSecure]);
 
     const handleBidModalOpen = () => {
         bidModalRef.current.showModal();
@@ -54,26 +40,14 @@ const ProductDetails = () => {
             status: 'pending'
         }
 
-        fetch('http://localhost:3000/bids', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newBid)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.insertedId) {
+        axiosSecure.post('/bids', newBid)
+            .then((data) => {
+                if (data.data.insertedId) {
                     bidModalRef.current.close();
-                    Swal.fire({
-                        icon: "success",
-                        title: "Your bid has been plased",
-                        showConfirmButton: false,
-                        timer: 2000
-                    });
+                    toast.success("Your bid has been plased 🎉");
 
                     // add the new bid to the state
-                    newBid._id = data.insertedId;
+                    newBid._id = data.data.insertedId;
                     const newBids = [...bids, newBid];
                     newBids.sort((a, b) => b.bid_price - a.bid_price);
                     setBids(newBids);
