@@ -3,7 +3,7 @@ import LatestProducts from '../../components/LatestProducts/LatestProducts';
 import SectionTitle from '../../components/SectionTitle/SectionTitle';
 
 const fetchLatestProducts = async () => {
-    const res = await fetch('https://smart-deals-api-server-seven.vercel.app/latest-products');
+    const res = await fetch('https://smart-deals-server-1.onrender.com/latest-products');
     return res.json();
 }
 const latestProductsPromise = fetchLatestProducts();
