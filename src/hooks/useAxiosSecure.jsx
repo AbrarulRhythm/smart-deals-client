@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
 const axiosInstance = axios.create({
-    baseURL: 'https://smart-deals-api-server-seven.vercel.app/',
+    baseURL: 'https://smart-deals-server-1.onrender.com/',
 });
 
 const useAxiosSecure = () => {

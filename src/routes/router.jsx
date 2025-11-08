@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'productDetails/:id',
-                loader: ({ params }) => fetch(`https://smart-deals-api-server-seven.vercel.app/products/${params.id}`),
+                loader: ({ params }) => fetch(`https://smart-deals-server-1.onrender.com/products/${params.id}`),
                 element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>
             },
             {

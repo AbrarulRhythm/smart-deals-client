@@ -75,7 +75,14 @@ const CreateProduct = () => {
                                     {/* Title */}
                                     <div className='w-full md:w-6/12 px-2 mb-6'>
                                         <div className='form-group'>
-                                            <label htmlFor="title" className='text-sm inline-block mb-1.5 font-medium'>Title</label>
+                                            <label className='text-sm inline-block mb-1.5 font-medium'>Title</label>
+                                            <input type="text" name='title' className='w-full border border-gray-300 py-2.5 px-3 rounded-sm focus:outline-0 focus:border-violet-400' placeholder='e.g. Yamaha Fz Guitar for Sale' />
+                                        </div>
+                                    </div>
+                                    {/* Category */}
+                                    <div className='w-full md:w-6/12 px-2 mb-6'>
+                                        <div className='form-group'>
+                                            <label className='text-sm inline-block mb-1.5 font-medium'>Title</label>
                                             <input type="text" name='title' className='w-full border border-gray-300 py-2.5 px-3 rounded-sm focus:outline-0 focus:border-violet-400' placeholder='e.g. Yamaha Fz Guitar for Sale' />
                                         </div>
                                     </div>
@@ -93,11 +100,32 @@ const CreateProduct = () => {
                                             <input type="number" name='maxPrice' className='w-full border border-gray-300 py-2.5 px-3 rounded-sm focus:outline-0 focus:border-violet-400' placeholder='Optional (default = Min Price)' />
                                         </div>
                                     </div>
+                                    {/* Product Condition */}
+                                    <div className='w-full md:w-6/12 px-2 mb-6'>
+                                        <div className='form-group'>
+                                            <label className='text-sm inline-block mb-2 font-medium'>Product Condition</label>
+                                            <div className='flex items-center gap-6'>
+                                                <div className='flex items-center gap-2 font-medium'>
+                                                    <input type="radio" name="radio-4" className="radio radio-primary radio-sm" defaultChecked /> Brand New
+                                                </div>
+                                                <div className='flex items-center gap-2 font-medium'>
+                                                    <input type="radio" name="radio-4" className="radio radio-primary radio-sm" /> Used
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     {/* Product Usage time */}
                                     <div className='w-full md:w-6/12 px-2 mb-6'>
                                         <div className='form-group'>
                                             <label className='text-sm inline-block mb-1.5 font-medium'>Product Usage time</label>
                                             <input type="text" className='w-full border border-gray-300 py-2.5 px-3 rounded-sm focus:outline-0 focus:border-violet-400' placeholder='e.g. 1 year 3 month' />
+                                        </div>
+                                    </div>
+                                    {/* Prodict Image */}
+                                    <div className='w-full px-2 mb-6'>
+                                        <div className='form-group'>
+                                            <label className='text-sm inline-block mb-1.5 font-medium'>Your Product Image URL</label>
+                                            <input type="text" name='productImage' className='w-full border border-gray-300 py-2.5 px-3 rounded-sm focus:outline-0 focus:border-violet-400' placeholder='https://...' />
                                         </div>
                                     </div>
                                     {/* Seller Name */}
@@ -114,7 +142,7 @@ const CreateProduct = () => {
                                             <input type="email" defaultValue={user?.email} className='w-full border border-gray-300 py-2.5 px-3 rounded-sm focus:outline-0 focus:border-violet-400' placeholder='leli31955@nrlord.com' />
                                         </div>
                                     </div>
-                                    {/* Seller Email */}
+                                    {/* Seller Contact */}
                                     <div className='w-full md:w-6/12 px-2 mb-6'>
                                         <div className='form-group'>
                                             <label className='text-sm inline-block mb-1.5 font-medium'>Seller Contact</label>
@@ -128,11 +156,18 @@ const CreateProduct = () => {
                                             <input type="text" defaultValue={user?.photoURL} className='w-full border border-gray-300 py-2.5 px-3 rounded-sm focus:outline-0 focus:border-violet-400' placeholder='https://...' />
                                         </div>
                                     </div>
-                                    {/* Prodict Image */}
+                                    {/* Location */}
                                     <div className='w-full px-2 mb-6'>
                                         <div className='form-group'>
-                                            <label className='text-sm inline-block mb-1.5 font-medium'>Your Product Image URL</label>
-                                            <input type="text" name='productImage' className='w-full border border-gray-300 py-2.5 px-3 rounded-sm focus:outline-0 focus:border-violet-400' placeholder='https://...' />
+                                            <label className='text-sm inline-block mb-1.5 font-medium'>Location</label>
+                                            <input type="text" name='location' className='w-full border border-gray-300 py-2.5 px-3 rounded-sm focus:outline-0 focus:border-violet-400' placeholder='City, Country' />
+                                        </div>
+                                    </div>
+                                    {/* Description */}
+                                    <div className='w-full px-2 mb-6'>
+                                        <div className='form-group'>
+                                            <label className='text-sm inline-block mb-1.5 font-medium'>Simple Description about your Product</label>
+                                            <textarea name='description' className='w-full h-[120px] border border-gray-300 py-2.5 px-3 rounded-sm focus:outline-0 focus:border-violet-400' placeholder='e.g. I bought this product 3 month ago. did not used more than 1/2 time. actually learning guitar is so tough..... '></textarea>
                                         </div>
                                     </div>
                                     <div className='w-full px-2'>
